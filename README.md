@@ -1,67 +1,73 @@
-# text-adventure-christmas-cpp (Spanish version)
-# 🎄 Christmas Text Adventure Game (C++)
+# 🎄 Christmas Text Adventure — C++
 
-A C++ console game where you play as a chosen hero sent by the Wise Kings to deliver special gifts (Wi-Fi, a smartphone, and C++ books) to baby Jesus. Your journey is filled with magical choices, enemies, points, and challenges that affect your destiny. Will you succeed?
-
----
-
-## 🚀 Game Features
-
-- 📜 Rich interactive story based on Christmas traditions  
-- 🎮 Turn-based decision gameplay with randomized events  
-- 💀 Health, shield, and score system  
-- 🎯 Difficulty levels that affect lives and points  
-- 📂 Saves your score to a local file (`puntajes.txt`)  
-- 🧠 Custom console UI with clearing screen and formatting  
+A console-based text adventure game written in C++ where you play as a hero chosen by the Three Wise Kings to deliver special gifts (Wi-Fi, a smartphone, and C++ books) to baby Jesus. Your journey spans five chapters of branching paths, random encounters, and meaningful choices that determine your fate.
 
 ---
 
-## 🛠️ Requirements
+## Features
 
-- C++ Compiler (like `g++`)  
-- Linux / Windows / WSL / Any terminal that supports C++  
+- Interactive narrative split into five story chapters
+- Branching path choices at each chapter (3 options per crossroads)
+- Random encounter system with 14 possible events — enemies, treasures, shields, and more
+- Health, shield, and score tracking throughout the game
+- Three difficulty levels that adjust starting stats
+- Persistent leaderboard saved to a local file (`puntajes.txt`)
+- Simple console UI with screen clearing and a status bar
 
 ---
 
-## ⚙️ How to Compile
+## Requirements
 
-Open your terminal and run:
+- C++ compiler (`g++` recommended)
+- Compatible with Linux, Windows, macOS, or any environment with a C++ toolchain
+
+---
+
+## Compilation
 
 ```bash
-g++ juego_navidad.cpp -o navidad_game
+g++ text-adventure-christmas.cpp -o christmas-adventure
 ```
-
-> Replace `juego_navidad.cpp` with your actual filename if needed.
 
 ---
 
-## ▶️ How to Play
-
-Then run the game with:
+## Running the Game
 
 ```bash
-./navidad_game
+# Linux / macOS
+./christmas-adventure
+
+# Windows
+christmas-adventure.exe
 ```
 
-Follow the story and choose between different paths using numeric input (1/2/3). Make decisions wisely to keep your score and lives.
+---
+
+## Main Menu
+
+| Option | Description          |
+|--------|----------------------|
+| 1      | Start a new game     |
+| 2      | View leaderboard     |
+| 3      | Exit                 |
 
 ---
 
-## 💡 Difficulty Levels
+## Difficulty Levels
 
-At the start, you'll choose a difficulty that sets your starting stats:
+Chosen at the start of each run. Difficulty affects your starting lives and whether you begin with a shield.
 
-| Difficulty                      | Score | Lives | Shield |
-|---------------------------------|-------|-------|--------|
-| Easy (Camino del Encanto)       | 5000  | 2     | ✅      |
-| Medium (Bosque Mágico)          | 5000  | 2     | ❌      |
-| Hard (Duendes y Escarpos)       | 5000  | 1     | ❌      |
+| Difficulty                          | Score | Lives | Shield |
+|-------------------------------------|-------|-------|--------|
+| Easy — Camino del Encanto           | 5000  | 2     | ✅     |
+| Medium — Bosque Mágico              | 5000  | 2     | ❌     |
+| Hard — Duendes y Escarpos           | 5000  | 1     | ❌     |
 
 ---
 
-## 🎯 Game Stats
+## Gameplay
 
-Throughout the journey, you'll see a status bar like:
+Each chapter presents a crossroads with three paths. After choosing, a random encounter triggers — you may gain or lose points, lives, or shields. The status bar updates after every event:
 
 ```
 -----------------------------------------------------
@@ -69,49 +75,59 @@ Throughout the journey, you'll see a status bar like:
 -----------------------------------------------------
 ```
 
-- Lose points through bad events (dragons, zombies, bandidos...)  
-- Gain lives, shields, and points through good events (scrolls, statues, treasures...)
+Survive all five chapters to win. Lose all lives and the run ends early.
+
+### Random Encounters
+
+| Type     | Examples                                      | Effect              |
+|----------|-----------------------------------------------|---------------------|
+| Enemies  | Zombie, Dragon, Cyclops, Giant Spider, Bandit | −1 or −2 lives / −1000 pts |
+| Rewards  | Treasure, Ancient Scroll, Gold, XP            | +1000 pts           |
+| Pickups  | Armor, Shield, Extra Life                     | +1 shield / +1 life |
+
+Shields absorb damage before lives are deducted.
 
 ---
 
-## 📝 Scoring System
+## Score & Leaderboard
 
-At the end of the game (win or lose), your score is saved in `puntajes.txt`:
+At the end of each run (win or lose) your name and score are appended to `puntajes.txt`. You can view all saved scores from the main menu.
 
 ```
 David    5000
 Juan     4000
 ```
 
-You can view the leaderboard from the main menu.
+---
+
+## Project Structure
+
+```
+text-adventure-christmas.cpp   # Full game source
+puntajes.txt                   # Auto-generated score log (created on first run)
+```
 
 ---
 
-## 📂 Project Files
+## Known Limitations & Potential Improvements
 
-- `juego_navidad.cpp` → Main game file  
-- `puntajes.txt` → Automatically generated score log  
-
----
-
-## 📌 To Improve
-
-- ✅ Save scores more securely  
-- ✅ Use classes or structs for player state  
-- ⌛ Translate fully to English  
-- ⌛ Add replay/exit confirmation  
-- ⌛ Export HTML or GUI version later  
+- [ ] Refactor global state into a `Player` struct or class
+- [ ] Translate all in-game text to English
+- [ ] Add input validation for name entry
+- [ ] Implement a proper leaderboard (sorted, with timestamps)
+- [ ] Add replay and exit confirmation prompts
+- [ ] Replace raw `\033[2J` escape codes with a cross-platform clear-screen utility
 
 ---
 
-## 👤 Author
+## Author
 
 **Santiago David Castillo**  
 Computer Science Engineering Student  
-🔗 [GitHub](https://github.com/Santiago193)
+[GitHub](https://github.com/Santiago193)
 
 ---
 
-## 📜 License
+## License
 
 MIT © Santiago David Castillo
